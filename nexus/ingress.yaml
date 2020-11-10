@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-jenkins
+  namespace: jenkins
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: jenkins.k8s.izaitsava.playpit.by
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: jenkins-service
+              servicePort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-sonar
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: sonar.k8s.izaitsava.playpit.by
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sonarqube-service
+              servicePort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-nexus
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - nexus.k8s.izaitsava.playpit.by
+      secretName: helloworld-tls
+  rules:
+    - host: nexus.k8s.izaitsava.playpit.by
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: nexus-service
+              servicePort: 80

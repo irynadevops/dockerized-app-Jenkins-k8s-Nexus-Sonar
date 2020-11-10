@@ -1,0 +1,54 @@
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<html>
+  <head>
+    <title>helloworld-ws Quickstart</title>
+    <style>
+        #panel, .flip {
+          font-size: 24px;
+          padding: 10px;
+          text-align: center;
+          background-color: #00BFFF;
+          color: white;
+          border: solid 1px #6495ED;
+          margin: auto;
+        }
+        #panel {
+          display: none;
+        }
+    </style>
+  </head>
+    
+  <body>
+    <h1><p style="text-align: center">Helloworld from Iryna Zaitsava!</p></h1>
+    <h3><p style="text-align: center">Hello! This is my app that I up by Jenkins and Kubernetis.</p></h3>
+    <p style="text-align: center">To make sure that the application is really changing I suggest you look at sha sum.</p>
+    <p class="flip" onclick="myFunction()">Push to check</p>
+
+    <div id="panel">
+      <p>SHA256</p>
+    </div>
+
+    <p style="text-align: center">If you have just deployed a new version of the app, please be patient. Wait a couple of minutes. The app should be given a breath. :)</p>
+    <p style="text-align: center">And of course, don't forget to refresh the page. It's just html)</p>
+    
+    <script>
+      function myFunction() {
+      document.getElementById("panel").style.display = "block";
+      }
+    </script>
+    </body>
+</html>

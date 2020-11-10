@@ -1,0 +1,15 @@
+apiVersion: snapshot.storage.k8s.io/v1alpha1
+kind: KubeletConfiguration
+feature-gates:
+    VolumeSnapshotDataSource=true
+
+apiVersion: snapshot.storage.k8s.io/v1alpha1
+kind: VolumeSnapshot
+metadata:
+  name: new-snapshot-demo
+spec:
+  snapshotClassName: csi-hostpath-snapclass
+  source:
+    name: jenkins-pv-claim
+    kind: PersistentVolumeClaim
+
